@@ -9,6 +9,7 @@ def index():
 	foodQuery = ""
 	result=[]
 	keys=[]
+	angularInitString = ""
 	if request.method == 'POST':
 		keys = ["item_name","brand_name","nf_calories","nf_serving_size_qty","nf_serving_size_unit","nf_protein","nf_total_carbohydrate","nf_total_fat"]
 		foodQuery = request.form['foodQuery']
@@ -28,7 +29,7 @@ def index():
 		hits = jsonResponse['hits']
 		for hit in hits:
 			result.append(hit["fields"])
-			
+
 	return render_template('index.html',foodQuery=foodQuery,result=result,keys=keys)
 
 
